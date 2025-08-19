@@ -5,7 +5,7 @@
       ciudad: "Remoto",
       correo: "krlosseduardo.92@gmail.com",
       social: {
-        instagram: "https://www.instagram.com/tuusuario/",
+        instagram: "https://www.instagram.com/soy.carlosdigital/",
         dribbble: "https://dribbble.com/tuusuario",
         behance: "https://behance.net/tuusuario"
       }
