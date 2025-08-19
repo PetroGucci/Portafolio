@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portafolio | Diseñador Gráfico</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <meta name="description" content="Portafolio minimalista y rápido para presentar trabajos de diseño gráfico: branding, ilustración, UI y más." />
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#111827">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Carlos Angulo",
+    "jobTitle": "Marketing Digital",
+    "url": "https://tu-usuario.github.io/",
+    "sameAs": ["https://www.behance.net/tuusuario","https://dribbble.com/tuusuario","https://www.instagram.com/tuusuario/"]
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="#top" aria-label="Inicio">
+        <span class="logo-badge" aria-hidden>DG</span>
+        <span>Portafolio</span>
+      </a>
+      <nav class="links" aria-label="Secciones">
+        <a href="#trabajos">Trabajos</a>
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#contacto">Contacto</a>
+        <button id="theme" class="btn" aria-label="Cambiar tema">🌓</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" class="container">
+    <section class="hero">
+      <span class="pill">Disponible para proyectos • <span id="hero-city">Remoto</span></span>
+      <h1>Hola, soy <span id="hero-name">Tu Nombre</span> — Marketing Digital, especializado en <span class="gradient-text">branding, identidad visual e ilustración</span>.</h1>
+      <p class="muted">Trabajo diseños limpios, con intención y listos para producción. Aquí verás una selección cuidada de mis proyectos. Sí, elegí los mejores — porque así debe ser.</p>
+      <div class="cta">
+        <a class="btn primary" href="#trabajos">Ver portafolio</a>
+        <a class="btn" href="./assets/CV.pdf" download>Descargar CV</a>
+        <a class="btn" href="#contacto">Hablemos</a>
+      </div>
+    </section>
+
+    <section id="trabajos" class="section">
+      <h2>Trabajos destacados</h2>
+      <p class="muted">Filtra por disciplina y abre cualquier pieza para verla en detalle.</p>
+      <div class="filters" role="toolbar" aria-label="Filtros de proyectos" id="filters"></div>
+      <div id="gallery" class="grid" style="grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));"></div>
+    </section>
+
+    <section id="sobre-mi" class="section about">
+      <div class="panel">
+        <h2>Sobre mí</h2>
+        <p>Soy un diseñador orientado a resultados. Menos bla bla, más branding que funcione. Me obsesiona la tipografía, la composición y el color (en ese orden). Trabajo con marcas que valoran la coherencia y la calidad.</p>
+        <ul class="list" aria-label="Datos rápidos">
+          <li>🎯 Enfoque: Identidad visual, packaging, UI de productos.</li>
+          <li>🛠️ Herramientas: Adobe CC, Figma, Procreate, Blender (lo justo).</li>
+          <li>🚀 Entrega: Listo para imprenta y para web, sin dramas.</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>Servicios</h3>
+        <ul class="list">
+          <li><strong>Identidad de marca</strong> – Naming, logo, sistema visual, guías.</li>
+          <li><strong>Materiales</strong> – Papelería, redes, presentaciones, packaging.</li>
+          <li><strong>Diseño digital</strong> – UI para landing y producto, diseño de emails.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contacto" class="section">
+      <div class="panel">
+        <h2>Contacto</h2>
+        <p class="muted">Si te gustó lo que viste, vamos a construir algo con sentido. Respondo rápido.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn primary" href="mailto:tu.correo@ejemplo.com?subject=Proyecto%20de%20dise%C3%B1o">Escríbeme</a>
+          <a class="btn" target="_blank" rel="noopener" href="https://www.instagram.com/tuusuario/">Instagram</a>
+          <a class="btn" target="_blank" rel="noopener" href="https://dribbble.com/tuusuario">Dribbble</a>
+          <a class="btn" target="_blank" rel="noopener" href="https://behance.net/tuusuario">Behance</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap">
+      <small>© <span id="year"></span> <span id="foot-name">Carlos Angulo</span>. Todos los derechos reservados.</small>
+      <small class="muted">Hecho con HTML, CSS y un poco de JS. Sin frameworks, sin excusas.</small>
+    </div>
+  </footer>
+
+  <!-- Lightbox Modal -->
+  <dialog id="modal" aria-labelledby="lb-title">
+    <div class="lightbox">
+      <div class="lb-media"><img id="lb-img" alt="Vista del proyecto" loading="lazy"></div>
+      <div class="lb-info">
+        <div class="lb-head">
+          <h3 id="lb-title" style="margin:0"></h3>
+          <button class="close" aria-label="Cerrar" onclick="modal.close()">×</button>
+        </div>
+        <p id="lb-desc" class="muted"></p>
+        <div id="lb-tags" class="tags" style="margin:12px 0"></div>
+        <div class="actions">
+          <a id="lb-live" class="btn" target="_blank" rel="noopener">Ver proyecto</a>
+          <a id="lb-repo" class="btn" target="_blank" rel="noopener">Código / Archivos</a>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="js/script.js"></script>
+
+</body>
+</html>
