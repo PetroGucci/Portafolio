@@ -3,11 +3,11 @@
     const PROFILE = {
       nombre: "Carlos Angulo",
       ciudad: "Remoto",
-      correo: "krlosseduardo.92@gmail.com",
+      correo: "Krlossseduardo.92@gmail.com",
       social: {
         instagram: "https://www.instagram.com/soy.carlosdigital/",
-        dribbble: "https://dribbble.com/tuusuario",
-        behance: "https://behance.net/tuusuario"
+        linkedin: "https://www.linkedin.com/in/carlos-angulo-94999421b/",
+        behance: "https://www.behance.net/soycarlosdigital"
       }
     };
 
@@ -74,9 +74,9 @@ themeBtn.addEventListener('click', ()=>{
     // Actualiza enlaces sociales/contacto
     const contactBtns = $$('#contacto a.btn');
     contactBtns.forEach(a => {
-      if(a.textContent.includes('Escríbeme')) a.href = `mailto:${PROFILE.correo}?subject=Proyecto%20de%20dise%C3%B1o`;
+      if(a.textContent.includes('Escríbeme')) a.href = `mailto:${PROFILE.correo}?subject=Consulta%20sobre%20proyecto%20de%20Marketing%20Digital&body=Hola%20Carlos,%0D%0A%0D%0AEstoy%20interesado%20en%20tus%20servicios%20de%20Marketing%20Digital%20y%20me%20gustaría%20conversar%20sobre%20un%20proyecto.%20%0D%0A%0D%0AQuedo%20atento%20a%20tu%20respuesta.%0D%0A%0D%0ASaludos,`;
       if(a.textContent.includes('Instagram')) a.href = PROFILE.social.instagram;
-      if(a.textContent.includes('Dribbble')) a.href = PROFILE.social.dribbble;
+      if(a.textContent.includes('LinkedIn')) a.href = PROFILE.social.linkedin;
       if(a.textContent.includes('Behance')) a.href = PROFILE.social.behance;
     });
 
