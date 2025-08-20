@@ -8,40 +8,50 @@
         instagram: "https://www.instagram.com/soy.carlosdigital/",
         linkedin: "https://www.linkedin.com/in/carlos-angulo-94999421b/",
         behance: "https://www.behance.net/soycarlosdigital",
-        whatsapp: "https://wa.me/584145450918", // Cambia por tu número real
+        whatsapp: "https://wa.me/584145450918", 
       }
     };
 
     // Proyectos de ejemplo: reemplaza 'cover' por rutas reales (p.ej. assets/branding-uno.jpg)
     const PROJECTS = [
       {
-        title: "Identidad • Café Origen",
-        year: 2025,
-        cover: "./assets/ejemplo-branding.jpg",
-        tags: ["Branding","Packaging"],
-        description: "Sistema visual completo: logo, paleta, tipografía y empaque listo para impresión.",
-        live: "#",
-        repo: "https://github.com/tuusuario/cafe-origen"
+      title: "Publicaciones de Instagram",
+      year: 2024,
+      tags: ["Post"],
+      cover: "./assets/Images/Post/Post_para_Instagram_para_contenido_psicologia_centrado_y_llamativo_rosa.png",
+      images: [
+        { src: "./assets/Images/Post/Post_para_Instagram_para_contenido_psicologia_centrado_y_llamativo_rosa.png", desc: "Publicación para Instagram sobre psicología" },
+        { src: "./assets/Images/Post/524815345_1666383154066387_4804356597192189977_n.jpg", desc: "Publicación para Instagram sobre psicología" },
+        { src: "./assets/Images/Post/524960760_18053864462528539_5597198048789890410_n.webp", desc: "Rifa" }
+      ],
+      live: "#",
+      repo: "#"
       },
       {
-        title: "Jornada de Evaluación",
-        year: 2024,
-        cover: "./assets/Post.jpg",
-        tags: ["Post"],
-        description: "Serie de ilustraciones para artículo de revista. Técnica mixta.",
-        live: "#",
-        repo: "https://github.com/tuusuario/ilustracion-editorial"
+      title: "Publicaciones de Instagram",
+      year: 2024,
+      tags: ["Flyer"],
+      cover: "./assets/Images/Flyer/Post.jpg",
+      images: [
+        { src: "./assets/Images/Flyer/Post.jpg", desc: "Publicación para Instagram sobre psicología" },
+        { src: "./assets/Images/Flyer/2025-08-20_a_las_6.58.14_p.m..png", desc: "Publicación para Instagram sobre psicología" },
+        { src: "./assets/Images/Flyer/522648116_18053122223528539_3963680367250242931_n.jpg", desc: "Publicación para Instagram sobre psicología" },
+      ],
+      live: "#",
+      repo: "#"
       },
       {
-        title: "UI Landing Producto",
-        year: 2024,
-        cover: "./assets/prueba.jpg",
-        tags: ["UI","Web"],
-        description: "Landing page con foco en conversión. Diseño responsive y guía de componentes.",
-        live: "#",
-        repo: "https://github.com/tuusuario/ui-landing"
+      title: "Publicaciones de Instagram",
+      year: 2024,
+      tags: ["Logo"],
+      cover: "./assets/Images/Logo/Logo_Marca_Personal_Letra_K_Minimalista_Tipografico_Negro_y_Rosado1.png",
+      images: [
+        { src: "./assets/Images/Logo/Logo_Marca_Personal_Letra_K_Minimalista_Tipografico_Negro_y_Rosado1.png", desc: "Logo Marca Personal" },
+      ],
+      live: "#",
+      repo: "#"
       }
-    ];
+];
 
     // ================ LÓGICA DE RENDER / INTERACCIÓN ================
     const $ = (sel, ctx=document) => ctx.querySelector(sel);
@@ -160,6 +170,43 @@ themeBtn.addEventListener('click', ()=>{
     if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
       $$('img').forEach(img=> img.style.transition='none');
     }
+
+let currentProject = null;
+let currentIndex = 0;
+
+function openLightbox(p){
+  currentProject = p;
+  currentIndex = 0;
+  showImage(currentIndex);
+
+  document.getElementById('lb-title').textContent = p.title;
+  const tags = document.getElementById('lb-tags');
+  tags.innerHTML = p.tags.map(t=>`<span class='tag'>${t}</span>`).join('');
+
+  const live = document.getElementById('lb-live');
+  const repo = document.getElementById('lb-repo');
+  if(p.live && p.live !== '#'){ live.href = p.live; live.style.display='inline-flex'; }
+  else { live.style.display='none'; }
+  if(p.repo){ repo.href = p.repo; repo.style.display='inline-flex'; }
+  else { repo.style.display='none'; }
+
+  modal.showModal();
+}
+
+function showImage(index){
+  if(!currentProject) return;
+  const imgs = currentProject.images || [{ src: currentProject.cover, desc: currentProject.description }];
+  if(index < 0) index = imgs.length - 1;
+  if(index >= imgs.length) index = 0;
+  currentIndex = index;
+
+  document.getElementById('lb-img').src = imgs[currentIndex].src;
+  document.getElementById('lb-desc').textContent = imgs[currentIndex].desc || '';
+}
+
+// Botones
+document.getElementById('prev').addEventListener('click', ()=> showImage(currentIndex - 1));
+document.getElementById('next').addEventListener('click', ()=> showImage(currentIndex + 1));
 
 // ================== MENÚ HAMBURGUESA ==================
 const toggle = document.querySelector(".menu-toggle");

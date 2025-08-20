@@ -48,7 +48,7 @@
       <p class="muted">Trabajo campañas claras, medibles y orientadas a resultados. Aquí verás una selección cuidada de mis proyectos y casos de éxito.</p>
       <div class="cta">
         <a class="btn primary" href="#trabajos">Ver portafolio</a>
-        <a class="btn" href="./assets/CV.pdf" download>Descargar CV</a>
+        <a class="btn" href="./assets/Documents/CV.pdf" download>Descargar CV</a>
         <a class="btn" href="#contacto">Hablemos</a>
       </div>
     </section>
@@ -107,7 +107,11 @@
   <!-- Lightbox Modal -->
   <dialog id="modal" aria-labelledby="lb-title">
     <div class="lightbox">
-      <div class="lb-media"><img id="lb-img" alt="Vista del proyecto" loading="lazy"></div>
+      <div class="lb-media">
+        <button id="prev" class="nav-btn" aria-label="Anterior">←</button>
+        <img id="lb-img" alt="Vista del proyecto" loading="lazy">
+        <button id="next" class="nav-btn" aria-label="Siguiente">→</button>
+      </div>
       <div class="lb-info">
         <div class="lb-head">
           <h3 id="lb-title" style="margin:0"></h3>

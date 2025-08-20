@@ -389,6 +389,31 @@ dialog{
   cursor:pointer
 }
 
+.lb-media {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.lb-media img {
+  max-width: 100%;
+  border-radius: 12px;
+}
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  border: none;
+  color: white;
+  font-size: 22px;
+  padding: 8px 12px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+#prev { left: 10px; }
+#next { right: 10px; }
+
 /* Utilities */
 .sr-only{
   position:absolute;
