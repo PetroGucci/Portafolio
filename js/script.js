@@ -7,7 +7,8 @@
       social: {
         instagram: "https://www.instagram.com/soy.carlosdigital/",
         linkedin: "https://www.linkedin.com/in/carlos-angulo-94999421b/",
-        behance: "https://www.behance.net/soycarlosdigital"
+        behance: "https://www.behance.net/soycarlosdigital",
+        whatsapp: "https://wa.me/584120540287", // Cambia por tu número real
       }
     };
 
@@ -78,6 +79,7 @@ themeBtn.addEventListener('click', ()=>{
       if(a.textContent.includes('Instagram')) a.href = PROFILE.social.instagram;
       if(a.textContent.includes('LinkedIn')) a.href = PROFILE.social.linkedin;
       if(a.textContent.includes('Behance')) a.href = PROFILE.social.behance;
+      if(a.textContent.includes('Whatapp')) a.href = PROFILE.social.whatapp;"?text=Hola%20Carlos,%20estoy%20interesado%20en%20tus%20servicios%20de%20Marketing%20Digital%20y%20me%20gustaría%20conversar%20sobre%20un%20proyecto.%20¿Podemos%20agendar%20una%20reunión?"
     });
 
     // Filtros
