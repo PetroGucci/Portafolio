@@ -160,3 +160,13 @@ themeBtn.addEventListener('click', ()=>{
     if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
       $$('img').forEach(img=> img.style.transition='none');
     }
+
+// ================== MENÚ HAMBURGUESA ==================
+const toggle = document.querySelector(".menu-toggle");
+const links = document.querySelector(".links");
+
+if (toggle) {
+  toggle.addEventListener("click", () => {
+    links.classList.toggle("show");
+  });
+}    

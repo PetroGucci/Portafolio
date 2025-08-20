@@ -63,7 +63,7 @@ img{
 .container{
   max-width:1100px;
   margin:0 auto;
-  padding:24px
+  padding:16px 24px;
 }
 header {
   position:sticky;
@@ -71,20 +71,20 @@ header {
   backdrop-filter:saturate(180%) blur(8px);
   background:color-mix(in hsl, var(--bg) 85%, transparent);
   border-bottom:1px solid color-mix(in hsl,var(--text) 10%, transparent);
-  z-index:50
+  z-index:50;
 }
 .nav {
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:16px
+  gap:16px;
 }
 .logo{
   display:flex;
   align-items:center;
   gap:10px;
   font-weight:800;
-  letter-spacing:.5px
+  letter-spacing:.5px;
 }
 .logo-badge{
   width:28px;
@@ -94,19 +94,54 @@ header {
   display:grid;
   place-items:center;
   color:#0b0d14;
-  font-weight:900
+  font-weight:900;
 }
 .links{
   display:flex;
   gap:14px;
-  flex-wrap:wrap
+  flex-wrap:wrap;
 }
 .links a{
   padding:8px 12px;
-  border-radius:12px
+  border-radius:12px;
 }
 .links a:hover{
-  background:color-mix(in hsl, var(--text) 10%, transparent)
+  background:color-mix(in hsl, var(--text) 10%, transparent);
+}
+
+/* Botón hamburguesa */
+.menu-toggle {
+  display:none;
+  font-size:24px;
+  background:none;
+  border:none;
+  cursor:pointer;
+  color:var(--text);
+}
+
+/* Responsive */
+@media (max-width:768px) {
+  .menu-toggle {
+    display:block;
+  }
+
+.links{
+  position:absolute;
+  top:70px; /* debajo del header */
+  right:0;
+  background:color-mix(in hsl, var(--bg) 95%, transparent);
+  backdrop-filter:saturate(180%) blur(10px);
+  flex-direction:column;
+  align-items:flex-start;
+  gap:10px;
+  padding:20px;
+  border-radius:0 0 12px 12px;
+  box-shadow:0 4px 20px rgba(0,0,0,0.15);
+  display:none;
+}
+.links.show{
+    display:flex;
+  }
 }
 
 .btn {
