@@ -162,6 +162,14 @@ themeBtn.addEventListener('click', ()=>{
     }
     modal.addEventListener('click', (e)=>{ const r = modal.getBoundingClientRect(); if(!(e.clientX>r.left && e.clientX<r.right && e.clientY>r.top && e.clientY<r.bottom)){ modal.close(); }});
 
+    modal.addEventListener('close', () => {
+    document.body.classList.remove("no-scroll");
+    });
+
+    modal.addEventListener("wheel", (e) => {
+    e.preventDefault();
+    }, { passive: false });
+
     // Init
     renderFilters();
     renderGallery();
@@ -191,6 +199,7 @@ function openLightbox(p){
   else { repo.style.display='none'; }
 
   modal.showModal();
+  document.body.classList.add("no-scroll");
 }
 
 function showImage(index){
@@ -207,6 +216,34 @@ function showImage(index){
 // Botones
 document.getElementById('prev').addEventListener('click', ()=> showImage(currentIndex - 1));
 document.getElementById('next').addEventListener('click', ()=> showImage(currentIndex + 1));
+
+// Teclado (← →)
+document.addEventListener('keydown', (e) => {
+  if(e.key === "ArrowLeft") showImage(currentIndex - 1);
+  if(e.key === "ArrowRight") showImage(currentIndex + 1);
+});
+
+// Scroll lateral (ej: Magic Mouse o touchpad)
+// document.querySelector(".lb-media").addEventListener("wheel", (e) => {
+//   if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) { 
+//     if (e.deltaX > 0) showImage(currentIndex + 1); // scroll derecha
+//     else showImage(currentIndex - 1); // scroll izquierda
+//   }
+// });
+
+// Gestos táctiles (swipe en móviles)
+let touchStartX = 0;
+let touchEndX = 0;
+
+document.getElementById("lb-img").addEventListener("touchstart", e => {
+  touchStartX = e.changedTouches[0].screenX;
+});
+
+document.getElementById("lb-img").addEventListener("touchend", e => {
+  touchEndX = e.changedTouches[0].screenX;
+  if (touchEndX < touchStartX - 50) showImage(currentIndex + 1); // swipe izquierda
+  if (touchEndX > touchStartX + 50) showImage(currentIndex - 1); // swipe derecha
+});
 
 // ================== MENÚ HAMBURGUESA ==================
 const toggle = document.querySelector(".menu-toggle");
