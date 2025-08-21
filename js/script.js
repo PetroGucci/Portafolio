@@ -182,6 +182,120 @@ themeBtn.addEventListener('click', ()=>{
 let currentProject = null;
 let currentIndex = 0;
 
+// ------------------ Lightbox dots (insertar justo después de currentProject/currentIndex) ------------------
+(function(){
+  const dotsContainer = () => document.getElementById('lb-dots');
+  const imgEl = () => document.getElementById('lb-img');
+  const prevBtn = () => document.getElementById('prev');
+  const nextBtn = () => document.getElementById('next');
+  const ensureEl = el => !!el;
+
+  // Crea/actualiza los dots para el proyecto actual
+  function createDotsForCurrentProject(){
+    const container = dotsContainer();
+    if(!container || !currentProject) return;
+    const imgs = (currentProject.images && currentProject.images.length) ? currentProject.images : [{ src: currentProject.cover }];
+
+    // limpiar y crear
+    container.innerHTML = '';
+    if(imgs.length <= 1){
+      container.style.display = 'none';
+    } else {
+      container.style.display = 'flex';
+      imgs.forEach((_, i) => {
+        const dot = document.createElement('span');
+        dot.className = 'dot' + (i === currentIndex ? ' active' : '');
+        dot.setAttribute('role','button');
+        dot.setAttribute('aria-label', `Ir a imagen ${i+1}`);
+        dot.style.userSelect = 'none';
+        dot.addEventListener('click', (ev) => {
+          ev.stopPropagation();
+          // Llamamos a showImage para mantener la lógica existente
+          try { showImage(i); } catch(err){ console.warn('showImage no disponible', err); }
+        });
+        container.appendChild(dot);
+      });
+    }
+
+    // mostrar/ocultar flechas (si existen)
+    if(ensureEl(prevBtn()) && ensureEl(nextBtn())){
+      const display = imgs.length > 1 ? 'flex' : 'none';
+      prevBtn().style.display = display;
+      nextBtn().style.display = display;
+    }
+  }
+
+  // Marca el dot activo (llamado cuando cambia la imagen)
+  function updateActiveDot(){
+    const container = dotsContainer();
+    if(!container) return;
+    const dots = [...container.children];
+    dots.forEach((d, i) => {
+      if(i === currentIndex) d.classList.add('active');
+      else d.classList.remove('active');
+    });
+  }
+
+  // Observador: cuando cambie el src del img actualizamos el dot activo
+  function initImageObserver(){
+    const img = imgEl();
+    if(!img) return;
+    // si ya existe un observer lo limpiamos (defensivo)
+    if(img._dotObserver) img._dotObserver.disconnect();
+
+    const obs = new MutationObserver(muts => {
+      for(const m of muts){
+        if(m.type === 'attributes' && m.attributeName === 'src'){
+          // Pequeño timeout para permitir que currentIndex ya haya sido actualizado por showImage
+          setTimeout(updateActiveDot, 10);
+        }
+      }
+    });
+    obs.observe(img, { attributes: true });
+    img._dotObserver = obs;
+  }
+
+  // Observador del modal: cuando se abra, generamos los dots para el proyecto actual
+  (function initModalObserver(){
+    const modalEl = document.getElementById('modal');
+    if(!modalEl) return;
+    // si ya existe un observer lo limpiamos
+    if(modalEl._openObserver) modalEl._openObserver.disconnect();
+    const obs = new MutationObserver(muts => {
+      for(const m of muts){
+        if(m.type === 'attributes' && m.attributeName === 'open'){
+          if(modalEl.hasAttribute('open')){
+            // modal abierto -> crear dots para el proyecto actual y asegurar observador de imagen
+            try { createDotsForCurrentProject(); } catch(e){ console.warn(e); }
+            initImageObserver();
+            // marcar el dot activo justo ahora
+            setTimeout(updateActiveDot, 10);
+          }
+        }
+      }
+    });
+    obs.observe(modalEl, { attributes: true });
+    modalEl._openObserver = obs;
+  })();
+
+  // También exponemos una función pública (opcional) para forzar la creación si quieres llamarla desde openLightbox:
+  window.__lightboxCreateDots = function(){
+    createDotsForCurrentProject();
+    initImageObserver();
+    updateActiveDot();
+  };
+
+  // Por seguridad: si el modal ya está abierto (rare), inicializamos ahora
+  try {
+    const modalNow = document.getElementById('modal');
+    if(modalNow && modalNow.hasAttribute && modalNow.hasAttribute('open')){
+      createDotsForCurrentProject();
+      initImageObserver();
+      updateActiveDot();
+    }
+  } catch(e){ /* noop */ }
+})();
+
 function openLightbox(p){
   currentProject = p;
   currentIndex = 0;

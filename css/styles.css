@@ -477,6 +477,35 @@ dialog{
 dialog#modal {
   overflow: hidden;
 }
+
+/* Dots centrados sobre la imagen */
+.lightbox-dots {
+  position: absolute; /* importante */
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 5; /* por encima de la imagen */
+  pointer-events: auto;
+}
+
+.dot {
+  height: 6px;
+  width: 6px;
+  background-color: rgba(255,255,255,0.35);
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  transition: transform .15s ease, background-color .15s ease;
+  box-shadow: 0 1px 2px rgba(0,0,0,.2);
+}
+.dot:hover { transform: scale(1.25); }
+.dot.active {
+  background-color: #fff;
+  transform: scale(1.25);
+}
+
 /* Utilities */
 .sr-only{
   position:absolute;
