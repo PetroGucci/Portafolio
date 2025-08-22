@@ -18,35 +18,40 @@
       title: "Publicaciones de Instagram",
       year: 2024,
       tags: ["Post"],
-      cover: "./assets/Images/Post/Post_para_Instagram_para_contenido_psicologia_centrado_y_llamativo_rosa.png",
+      cover: "./assets/Images/Post/1.webp",
       images: [
-        { src: "./assets/Images/Post/Post_para_Instagram_para_contenido_psicologia_centrado_y_llamativo_rosa.png", desc: "Publicación para Instagram sobre psicología" },
-        { src: "./assets/Images/Post/524815345_1666383154066387_4804356597192189977_n.jpg", desc: "Publicación para Instagram sobre psicología" },
-        { src: "./assets/Images/Post/524960760_18053864462528539_5597198048789890410_n.webp", desc: "Rifa" }
+        { src: "./assets/Images/Post/1.webp", desc: "" },
+        { src: "./assets/Images/Post/2.webp", desc: "" },
+        { src: "./assets/Images/Post/3.webp", desc: "🌱 Tu mente también merece un respiro, no todo tienes que resolverlo hoy" },
+        { src: "./assets/Images/Post/4.webp", desc: "🌱 Haz ejercicio: activa tu cuerpo y libera endorfinas.\n😴 Duerme bien: tu mente también necesita descansar.\n💜 Rodéate de relaciones positivas: conecta con quienes te suman.\n🎨 Haz algo que disfrutes: regalarte momentos de felicidad es autocuidado." },
+        { src: "./assets/Images/Post/5.webp", desc: "💜 Sanar también es un acto de valentía: pedir ayuda cuando la necesitas." },
+        { src: "./assets/Images/Post/6.webp", desc: "" },
+        { src: "./assets/Images/Post/7.webp", desc: "" },
+        { src: "./assets/Images/Post/8.webp", desc: "" },
       ],
       live: "#",
       repo: "#"
       },
       {
-      title: "Publicaciones de Instagram",
+      title: "Flyers Instagram",
       year: 2024,
       tags: ["Flyer"],
-      cover: "./assets/Images/Flyer/Post.jpg",
+      cover: "./assets/Images/Flyer/1.webp",
       images: [
-        { src: "./assets/Images/Flyer/Post.jpg", desc: "Publicación para Instagram sobre psicología" },
-        { src: "./assets/Images/Flyer/2025-08-20_a_las_6.58.14_p.m..png", desc: "Publicación para Instagram sobre psicología" },
-        { src: "./assets/Images/Flyer/522648116_18053122223528539_3963680367250242931_n.jpg", desc: "Publicación para Instagram sobre psicología" },
+        { src: "./assets/Images/Flyer/1.webp", desc: "Es el momento perfecto para dar ese primer paso hacia tu bienestar emocional.\n💜 Sesiones en línea y presenciales, adaptadas a ti." },
+        { src: "./assets/Images/Flyer/2.webp", desc: "" },
+        { src: "./assets/Images/Flyer/3.webp", desc: "" },
       ],
       live: "#",
       repo: "#"
       },
       {
-      title: "Publicaciones de Instagram",
+      title: "Logo",
       year: 2024,
       tags: ["Logo"],
-      cover: "./assets/Images/Logo/Logo_Marca_Personal_Letra_K_Minimalista_Tipografico_Negro_y_Rosado1.png",
+      cover: "./assets/Images/Logo/1.webp",
       images: [
-        { src: "./assets/Images/Logo/Logo_Marca_Personal_Letra_K_Minimalista_Tipografico_Negro_y_Rosado1.png", desc: "Logo Marca Personal" },
+        { src: "./assets/Images/Logo/1.webp", desc: "Logo Marca Personal" },
       ],
       live: "#",
       repo: "#"

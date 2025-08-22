@@ -473,6 +473,10 @@ dialog{
   opacity: 0;
 }
 
+#lb-desc {
+  white-space: pre-wrap;
+}
+
 /* para asegurar que el área de scroll del modal no haga scroll de página */
 dialog#modal {
   overflow: hidden;
